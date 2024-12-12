@@ -1,0 +1,69 @@
+/* Add your styles here. Only use classes please! */
+
+.whatever {
+    width: 0 auto;
+}
+
+
+/* DO NOT CHANGE CODE BELOW! */
+
+.main {
+    width: 70%;
+    margin: 0 auto;
+    padding: 5px 15px;
+
+    line-height: 1.3;
+    /* zoom: 1.3; */
+}
+
+.main h1 {
+    margin-bottom: 45px;
+
+    text-align: center;
+}
+
+.main h2 {
+    margin-top: 45px;
+}
+
+.title {
+    color: rgb(0, 0, 0);
+}
+
+.subtitle {
+    color: rgb(0, 0, 0);
+}
+
+.author {
+    text-align: center;
+}
+
+.bigimage {
+    width: 100%;
+}
+
+.mediumimage {
+    width: 50%;
+}
+
+.smallimage {
+    width: 25%;
+}
+
+.bigimagecentered {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mediumimagecentered {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.smallimagecentered {
+    display: block;
+    width: 25%;
+    margin: 0 auto;
+}

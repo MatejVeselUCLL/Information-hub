@@ -24,9 +24,10 @@ const Manuals: React.FC<Props> = ({ queryResults }: Props) => {
 
           <p>Tags:&nbsp; 
             {manual.tags.map((tag, jndex) => (
-                  <span key={jndex}>{tag}, </span>
+              <span key={jndex}>{tag}, </span>
             ))}
           </p>
+          <p>Language: {manual.lang.toUpperCase()}</p>
           
         </article>
 

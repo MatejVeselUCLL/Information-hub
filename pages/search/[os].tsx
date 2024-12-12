@@ -16,19 +16,41 @@ const Search: React.FC = () => {
   const { os } = router.query;
 
   // Hard-coded manuals. Use getManuals!!
+  // Primary key is a compound key: id and os.
   const [manuals, setManuals] = useState<Manual[]>([
-    { id: 1, title: "Send an Email", os: "Windows", tags: ["Windows 10", "Chrome", "Gmail", "email", "internet"] },
-    { id: 2, title: "Adjust Text Size", os: "Windows", tags: ["Windows 10", "Settings", "scale", "display", "size", "increase", "decrease"] },
-    { id: 3, title: "Adjust Text Size", os: "Linux", tags: ["Ubuntu 20", "Settings", "scale", "display", "size", "increase", "decrease"] },
-    { id: 4, title: "Find Startup Apps", os: "Windows", tags: ["Windows 11", "Settings", "Task Manager", "startup apps"] },
-    { id: 5, title: "Find Startup Apps", os: "Linux", tags: ["Fedora 41", "Settings", "Task Manager", "startup apps"] },
-    { id: 6, title: "Create a Macro in Excel", os: "Windows", tags: ["Windows 10", "Excel", "macro", "record"] },
-    { id: 7, title: "Convert Excel to CSV File", os: "Windows", tags: ["Windows 10", "Excel", "converting", "CSV", "save as"] },
-    { id: 8, title: "Convert Excel to CSV File", os: "MacOS", tags: ["MacOS Sequoia", "Excel", "converting", "CSV", "save as"] },
+    { id: 0, lang: 'en', title: "Creating a User Manual Template", os: "Windows", tags: ["Windows 10", "HTML", "CSS", "manual", "template"] },
+    { id: 1, lang: 'nl', title: "Handleiding voor Windows", os: "Windows", tags: ["Windows 11", "Instellingen", "updates", "algemeen", "installeren", "programma", "maken", "mappen"] },
+    { id: 2, lang: 'nl', title: "Het Gebruik van een Password Manager", os: "Windows", tags: ["Windows", "browser", "internet", "wachtwoord", "manager", "Nordpass"] },
+    { id: 2, lang: 'nl', title: "Het Gebruik van een Password Manager", os: "MacOS", tags: ["Windows", "browser", "internet", "wachtwoord", "manager", "Nordpass"] },
+    { id: 2, lang: 'nl', title: "Het Gebruik van een Password Manager", os: "Linux", tags: ["Windows", "browser", "internet", "wachtwoord", "manager", "Nordpass"] },
+    { id: 3, lang: 'en', title: "Nvidia GeForce Experience Manual", os: "Windows", tags: ["Windows 10", "Windows 11", "drivers", "Nividia", "graphics", "games"] },
+    { id: 4, lang: 'en', title: "Manual for Receiving and Sending Messages", os: "IOS", tags: ["phone", "WhatsApp", "messages", "send", "receive"] },
+    { id: 4, lang: 'en', title: "Manual for Receiving and Sending Messages", os: "Android", tags: ["phone", "WhatsApp", "messages", "send", "receive"] },
+    { id: 5, lang: 'en', title: "Manual for Receiving and Making Calls", os: "IOS", tags: ["phone", "WhatsApp", "calls", "make", "receive"] },
+    { id: 5, lang: 'en', title: "Manual for Receiving and Making Calls", os: "Android", tags: ["phone", "WhatsApp", "calls", "make", "receive"] },
+    { id: 6, lang: 'en', title: "Handling Notifications", os: "IOS", tags: ["phone", "WhatsApp", "notifications", "handling"] },
+    { id: 7, lang: 'nl', title: "Gebruik van WhatsApp", os: "Android", tags: ["telefoon", "WhatsApp", "algemeen", "gids", "navigatie"] },
+    { id: 7, lang: 'nl', title: "Gebruik van WhatsApp", os: "IOS", tags: ["telefoon", "WhatsApp", "algemeen", "gids", "navigatie"] },
+    { id: 7, lang: 'nl', title: "Gebruik van WhatsApp", os: "Windows", tags: ["browser", "computer", "WhatsApp", "algemeen", "gids", "navigatie"] },
+    { id: 8, lang: 'en', title: "User Manual for Gmail", os: "Windows", tags: ["Gmail", "Google", "email", "e-mail", "mail", "send", "receive", "post", "letter"] },
+    { id: 8, lang: 'en', title: "User Manual for Gmail", os: "MacOS", tags: ["Gmail", "Google", "email", "e-mail", "mail", "send", "receive", "post", "letter"]  },
+    { id: 8, lang: 'en', title: "User Manual for Gmail", os: "Linux", tags: ["Gmail", "Google", "email", "e-mail", "mail", "send", "receive", "post", "letter"]  },
+    { id: 9, lang: 'en', title: "My WhatsApp Manual", os: "IOS", tags: ["phone", "WhatsApp", "general", "guide", "navigation"] },
+    { id: 10, lang: 'nl', title: "Maak een nieuw account aan op DeMorgen.", os: "Windows", tags: ["DeMorgen", "krant", "nieuws", "Vlaams", "vinden", "aanmaken", "account", "nieuw", "wachtwoord"] },
+    { id: 10, lang: 'nl', title: "Maak een nieuw account aan op DeMorgen.", os: "MacOS", tags: ["DeMorgen", "krant", "nieuws", "Vlaams", "vinden", "aanmaken", "account", "nieuw", "wachtwoord"] },
+    { id: 10, lang: 'nl', title: "Maak een nieuw account aan op DeMorgen.", os: "Linux", tags: ["DeMorgen", "krant", "nieuws", "Vlaams", "vinden", "aanmaken", "account", "nieuw", "wachtwoord"] },
+    { id: 11, lang: 'nl', title: "Handleiding: Bladwijzers gebruiken en beheren", os: "Windows", tags: ["Chrome", "internet", "browser", "bladwijzers", "gids", "maken", "maken"] },
+    { id: 11, lang: 'nl', title: "Handleiding: Bladwijzers gebruiken en beheren", os: "MacOS", tags: ["Chrome", "internet", "browser", "bladwijzers", "gids", "maken", "maken"] },
+    { id: 11, lang: 'nl', title: "Handleiding: Bladwijzers gebruiken en beheren", os: "Linux", tags: ["Chrome", "internet", "browser", "bladwijzers", "gids", "maken", "maken"] },
+    { id: 12, lang: 'nl', title: "Handleiding: Bestanden/foto's organiseren met de computer (Windows)", os: "Windows", tags: ["Windows 11", "organiseren", "afbeeldingen", "Bestandsverkenner", "bestand", "maken", "foto"] },
+    { id: 13, lang: 'nl', title: "Handleiding: Bestanden/foto's organiseren met de smartphone (Android)", os: "Android", tags: ["Windows 11", "organiseren", "afbeeldingen", "Bestandsverkenner", "bestand", "maken", "foto"] },
+    { id: 14, lang: 'nl', title: "Handleiding van Google drive", os: "Windows", tags: ["Google", "Drive", "algemeen", "maken", "map", "verplaatsen", "documenten", "delen", "video", "snelkoppelingen"] },
+    { id: 14, lang: 'nl', title: "Handleiding van Google drive", os: "MacOS", tags: ["Google", "Drive", "algemeen", "maken", "map", "verplaatsen", "documenten", "delen", "video", "snelkoppelingen"] },
+    { id: 14, lang: 'nl', title: "Handleiding van Google drive", os: "Linux", tags: ["Google", "Drive", "algemeen", "maken", "map", "verplaatsen", "documenten", "delen", "video", "snelkoppelingen"] },
   ]);
+
   // This getter is used to mimic back-end service that would get manualsByOs.
   const getManuals = (): Manual[] => {
-    console.log(os);
     return manuals.filter((manual) => manual.os === os);
   };
 
