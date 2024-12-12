@@ -54,7 +54,7 @@ const SearchForm: React.FC<Props> = ({ getManuals, setQueryResults }: Props) => 
   }, []); // Empty dependency array means the functions will get executed only the first time the site is opened.
 
   return (
-    <>
+    <>      
       <div className="mb-14">
         <form 
           className="w-max-[500px] flex flex-wrap justify-between gap-x-16 gap-y-8"
