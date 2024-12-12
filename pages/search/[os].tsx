@@ -70,7 +70,7 @@ const Search: React.FC = () => {
 
 
         <main className="mb-14 flex-1">
-          {/* <p className="text-center text-lg mb-12 -mt-5">{os} manuals:</p> */}
+          <p className="text-center text-lg mb-12 -mt-5">{os} manuals:</p>
           <SearchForm getManuals={getManuals} setQueryResults={setQueryResults} />
           <Manuals queryResults={queryResults} />
         </main>
